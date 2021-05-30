@@ -2,6 +2,16 @@
 
 ## Getting started
 
+At the very first start run `START.sh`. It will build an image, initially fill-in database and start the service.  
+
+To start the service use `docker-compose up -d`. You'll have to wait about 40 seconds before the service is up.  
+To stop service use `docker-compose down`.  
+
+Register your first user at `/register`.  
+If you need an admin - set your user `"is_admin"` field to true in database manually.
+
+---
+
 1) Install requirements: `pip install -r requirements.txt`
 2) Set flask running file: `set FLASK_APP=web_shop/app.py` (for Linux: `export FLASK_APP=web_shop/app.py`)
    2.1) If necessary set flask debugging mode:
@@ -17,7 +27,7 @@
    - SMTP_PASSWORD
    providing that "SMTP" keys shall represent an acting email-service smtp-configuration.
 5) Create tables from migrations: `flask db upgrade`
-6) Run `web_shop/database/load_db_inits.py`
+6) Run `python load_db_inits.py`
 7) Run `sudo service redis-server`   
 8) Run `celery -A web_shop.celery worker`
 9) Start app: `flask run` and open `http://127.0.0.1:5000/` in your browser. 
